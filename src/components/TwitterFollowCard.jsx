@@ -3,14 +3,22 @@ import { useState } from "react";
 
 export default function TwitterFollowCard({ name, userName }) {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [disableHover, setDisableHover] = useState(false);
 
   const followText = isFollowing ? "Following" : "Follow";
-  const followCardButtonClass = isFollowing
-    ? "tw-followCard-button is-following"
-    : "tw-followCard-button";
+  const buttonClass = `tw-followCard-button ${
+    isFollowing ? "is-following" : ""
+  } ${disableHover ? "" : "enable-hover"}`;
 
   const handleFollow = () => {
     setIsFollowing(!isFollowing);
+    setDisableHover(true);
+  };
+
+  const handleMouseEnter = () => {
+    if (disableHover) {
+      setDisableHover(false);
+    }
   };
 
   return (
@@ -27,7 +35,11 @@ export default function TwitterFollowCard({ name, userName }) {
         </div>
       </header>
       <aside>
-        <button onClick={handleFollow} className={followCardButtonClass}>
+        <button
+          onMouseEnter={handleMouseEnter}
+          onClick={handleFollow}
+          className={buttonClass}
+        >
           {followText}
         </button>
       </aside>

@@ -40,8 +40,10 @@
   min-width: 100px;
 }
 
-.tw-followCard-button:hover {
-  background-color: skyblue;
+.tw-followCard-button.enable-hover:hover {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .tw-followCard-button.is-following {
@@ -50,8 +52,10 @@
   border: 1px solid #fff;
 }
 
-.tw-followCard-button.is-following:hover {
-  background-color: tomato;
+.tw-followCard-button.is-following.enable-hover:hover {
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #111;
 }
 
 .tw-followCard-container {
