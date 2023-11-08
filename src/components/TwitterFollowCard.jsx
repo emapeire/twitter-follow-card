@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function TwitterFollowCard({ name, userName }) {
-  const [isFollowing, setIsFollowing] = useState(false);
+export default function TwitterFollowCard({
+  name,
+  userName,
+  initialIsFollowing,
+}) {
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const [disableHover, setDisableHover] = useState(false);
 
   const followText = isFollowing ? "Following" : "Follow";
@@ -40,7 +44,8 @@ export default function TwitterFollowCard({ name, userName }) {
           onClick={handleFollow}
           className={buttonClass}
         >
-          {followText}
+          <span className="tw-followCard-button-following">{followText}</span>
+          <span className="tw-followCard-button-unfollow">Unfollow</span>
         </button>
       </aside>
     </article>
